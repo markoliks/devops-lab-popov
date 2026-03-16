@@ -1,12 +1,24 @@
-:::writing{variant=“standard” id=“lab03”}
+University: ITMO University (https://itmo.ru/)
+Faculty: FICT (https://fict.itmo.ru/)
+Course: Введение в веб технологии (https://itmo.ru/)
+Year: 2025/2026
+Group: U4215
+Author: Mark Popov
+Lab: Lab3
+Date of create: 17.03.2026
+Date of finished: -
+
+⸻
 
 Лабораторная работа №3
 
 Мониторинг с использованием Prometheus и Grafana
 
+⸻
+
 Цель работы
 
-Изучить основы мониторинга контейнеризированных приложений с использованием Prometheus и Grafana, научиться собирать метрики и визуализировать их.
+Изучить основы мониторинга контейнеризированных приложений с использованием Prometheus и Grafana, научиться собирать и визуализировать метрики.
 
 ⸻
 
@@ -14,7 +26,7 @@
 
 1. Создание сети Docker
 
-Для взаимодействия контейнеров была создана сеть:
+Создана сеть для взаимодействия контейнеров:
 
 docker network create monitoring
 
@@ -23,11 +35,11 @@ docker network create monitoring
 
 2. Запуск Node Exporter
 
-Node Exporter используется для сбора метрик системы:
+Контейнер для сбора метрик системы:
 
 docker run -d --name node-exporter --restart unless-stopped -p 9100:9100 prom/node-exporter
 
-Контейнер был подключён к сети:
+Подключение к сети:
 
 docker network connect monitoring node-exporter
 
@@ -36,7 +48,7 @@ docker network connect monitoring node-exporter
 
 3. Настройка Prometheus
 
-Создан конфигурационный файл prometheus.yml:
+Создан файл prometheus.yml:
 
 global:
   scrape_interval: 15s
@@ -55,7 +67,7 @@ scrape_configs:
 
 4. Запуск Prometheus
 
-Контейнер Prometheus был запущен с подключением конфигурации:
+Запуск контейнера с конфигурацией:
 
 MSYS_NO_PATHCONV=1 docker run -d \
   --name prometheus \
@@ -66,7 +78,7 @@ MSYS_NO_PATHCONV=1 docker run -d \
   prom/prometheus \
   --config.file=/etc/prometheus/prometheus.yml
 
-После запуска проверено состояние таргетов:
+Проверка:
 
 http://localhost:9090/targets
 
@@ -89,36 +101,51 @@ docker run -d \
 
 6. Подключение Prometheus в Grafana
 
-В Grafana добавлен источник данных:
+Добавлен источник данных:
  • Тип: Prometheus
  • URL:
 
 http://prometheus:9090
 
-Проверка соединения выполнена успешно (Save & Test).
+Подключение успешно (Save & Test).
 
-⸻
+<img width="1259" height="994" alt="image" src="https://github.com/user-attachments/assets/c8d893bd-c624-483b-a287-02be401643a4" />
+
 
 7. Создание Dashboard
 
-Создан новый Dashboard и добавлена визуализация.
+Создан dashboard и добавлена визуализация.
 
-Использован запрос:
+Используемый запрос:
 
 node_cpu_seconds_total
 
-Дополнительно использован улучшенный запрос:
+Дополнительный (для наглядности):
 
 rate(node_cpu_seconds_total[1m])
 
-На графике отображаются метрики загрузки CPU.
+Построен график загрузки CPU.
 
-⸻
+<img width="708" height="746" alt="image" src="https://github.com/user-attachments/assets/f44790bb-1e10-4064-83f6-0ca2dd7d72a4" />
+<img width="711" height="390" alt="image" src="https://github.com/user-attachments/assets/1cb4a39c-6acb-4b3e-a46c-262362e976a5" />
+
 
 Результаты
-
-В ходе лабораторной работы:
  • Развернут стек мониторинга (Prometheus + Grafana)
- • Настроен сбор метрик с помощью Node Exporter
- • Проверена доступность сервисов
- • Построена визуализация метрик CPU
+ • Настроен сбор метрик через Node Exporter
+ • Проверена работоспособность сервисов
+ • Создан dashboard для визуализации
+
+<img width="1225" height="961" alt="image" src="https://github.com/user-attachments/assets/dc6c6562-d447-4779-8315-81291433cb35" />
+
+
+Вывод
+
+В ходе лабораторной работы были освоены:
+ • работа с Docker-контейнерами
+ • настройка сетей Docker
+ • конфигурация Prometheus
+ • подключение источников данных в Grafana
+ • построение графиков и мониторинга системы
+
+Система мониторинга успешно развернута и функционирует корректно.
