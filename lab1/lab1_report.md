@@ -18,6 +18,7 @@ Date of finished: -
 Команда:
 
 docker –version
+<img width="1898" height="1022" alt="image" src="https://github.com/user-attachments/assets/857b1e7f-41e7-442b-824e-9adb029cd68d" />
 
 
 ## 2. Запуск тестового контейнера
@@ -59,6 +60,7 @@ apt install curl
 
 curl –version
 
+<img width="1875" height="1010" alt="image" src="https://github.com/user-attachments/assets/c08484e0-da64-4a9b-936d-ab3ebea186d5" />
 
 ## 5. Запуск веб-сервера nginx
 
@@ -70,7 +72,8 @@ docker run -d -p 8080:80 –name web-server nginx:alpine
 
 http://localhost:8080
 
----
+<img width="1891" height="1011" alt="image" src="https://github.com/user-attachments/assets/a16210f7-bc1a-4dfc-a4c3-46ba9dff0f96" />
+
 
 ## 6. Управление контейнерами
 
@@ -90,6 +93,7 @@ docker start web-server
 
 docker rm web-server
 
+<img width="1899" height="1004" alt="image" src="https://github.com/user-attachments/assets/54e5099b-762c-4a09-98ee-3ce1a058c8c7" />
 
 ## 7. Работа с томами
 
