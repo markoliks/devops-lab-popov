@@ -6,7 +6,7 @@ Group: U4125
 Author: Mark Popov  
 Lab: Coursework  
 Date of create: 17.03.2026  
-Date of finished: -  
+Date of finished: - 
 
 # Курсовая работа
 **Создание персонального сайта с использованием MkDocs**
@@ -26,6 +26,7 @@ https://markoliks.github.io/2025_2026-introduction-in-web-tech-U4125-popov_m_a/
 
 Использованные команды:
 
+```bash
 pip install mkdocs
 pip install mkdocs-material
 mkdocs --version
@@ -110,3 +111,6 @@ mkdocs build
  • организация структуры сайта
  • локальное тестирование
  • сборка и публикация проекта
+
+
+![Скриншот 17-03-2026 203209](https://github.com/user-attachments/assets/19af2df5-7686-46e3-9c74-fc738ca2b55a)
